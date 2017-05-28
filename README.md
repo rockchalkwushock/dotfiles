@@ -15,7 +15,7 @@ Repository for holding all of my dotfiles.
 1. Run installation script for [`homebrew`](https://brew.sh) if not already installed!!!
 2. Add your name & email in `.gitconfig`.
 3. The path being exported in `.bash_profile` could be different for you so check! Update as needed.
-4. If you have any other dotfiles you wish to be used upon startup of terminal add them [here](https://github.com/rockchalkwushock/dotfiles/blob/master/README.md#18).
+4. If you have any other dotfiles you wish to be used upon startup of terminal add them [here](https://github.com/rockchalkwushock/dotfiles/blob/master/.bash_profile#L18).
 
 ## Usage
 
