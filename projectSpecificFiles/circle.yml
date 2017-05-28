@@ -1,0 +1,16 @@
+machine:
+  timezone: America/Chicago
+  node:
+    version: '6.10.3' # LTS
+dependencies:
+  pre:
+    - yarn install
+test:
+  override:
+    - yarn start validate.withCoverage
+  post:
+    - yarn start reportCoverage
+
+# TODO: Add compile when ready to build distribution
+# Remember here all scripts must start with 'yarn start' === 'nps'
+# unless the script explicity is prefixed with 'nps'.
