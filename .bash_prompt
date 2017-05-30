@@ -7,10 +7,10 @@
 
 # DEFINE VARIABLES HERE
 
-green="\$(tput setaf 118)\]";
-blue="\[$(tput setaf 75)\]";
-purple="\[$(tput setaf 171)\]";
-reset="\[$(tput sgr0)\]";
+green=$(tput setaf 118);
+blue=$(tput setaf 75);
+purple=$(tput setaf 171);
+reset=$(tput sgr0);
 
 # FUNCTION FOR CUSTOMIZING BASH WITH USE OF GIT
 # Thanks to @mathiasbynens for the below code
@@ -69,10 +69,10 @@ prompt_git() {
 
 # SETTING THE PS1 VARIABLE FOR USE
 
-PS1="\u ";                                                                      # Set username
-PS1+="\[${purple}\]in ";
-PS1+="\[${blue}\]\W";                                                           # Current Working Directory
+PS1="\u";                                                                       # Set username
+PS1+="\[${purple}\] in ";
+PS1+="\[${blue}\]\W ";                                                          # Current Working Directory
 PS1+="\$(prompt_git \"\[${purple}\] on \[${green}\]\" \"\[${purple}\]\")";      # Git Repository
-PS1+="\[${purple}\] $\[${reset}\] ";                                            # End Prompt
+PS1+="\[${purple}\]\$ \[${reset}\]";                                            # End Prompt
 
 export PS1;
