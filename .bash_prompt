@@ -7,6 +7,7 @@
 
 # DEFINE VARIABLES HERE
 
+yellow=$(tput setaf 185);
 green=$(tput setaf 118);
 blue=$(tput setaf 75);
 purple=$(tput setaf 171);
@@ -69,7 +70,7 @@ prompt_git() {
 
 # SETTING THE PS1 VARIABLE FOR USE
 
-PS1="\u";                                                                       # Set username
+PS1="\[${yellow}\]\u";                                                          # Set username
 PS1+="\[${purple}\] in ";
 PS1+="\[${blue}\]\W ";                                                          # Current Working Directory
 PS1+="\$(prompt_git \"\[${purple}\] on \[${green}\]\" \"\[${purple}\]\")";      # Git Repository
