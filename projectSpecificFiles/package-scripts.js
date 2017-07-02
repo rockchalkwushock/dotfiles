@@ -1,52 +1,35 @@
 const npsUtils = require('nps-utils')
 
-const { rimraf, series, concurrent } = npsUtils
+const { concurrent, rimraf, series } = npsUtils
 
 module.exports = {
   scripts: {
-    clean: {
-      description: 'Clean repository of generated directories & files.',
-      // TODO: Add directories or files for removing: rimraf('build')
-      script: series(rimraf('.next'), rimraf('coverage'))
-    },
-    commit: {
-      description: 'Run commitizen-cli for creating clean commit messages.',
-      script: 'git cz'
-    },
+    // TODO: Add any other directories or files for cleaning.
+    clean: series(rimraf('coverage')),
+    commit: 'git cz',
+    /**
+     * TODO: Utilize this key for running 'yarn start' or 'npm start'
+     * as normal scripts (i.e. nodemon index.js)
+     * By doing this now running 'yarn start' clean will yield:
+     * - nps clean
+     * Where as 'yarn start' will yield:
+     * - nodemon index.js
+     */
+    default: 'nps',
     lint: {
-      description: 'Lint code base.',
-      // TODO: Update directories to lint.
-      default: 'eslint __tests__ components lib pages',
-      fix: {
-        description: 'Lint & fix errors.',
-        script: series.nps('lint --fix')
-      }
+      // TODO: Add targets for eslint.
+      default: 'eslint',
+      fix: series.nps('lint --fix')
     },
-    reportCoverage: {
-      description: 'Send coverage data to third party.',
-      // TODO: Update for third-party coverage reporter.
-      script: 'codecov'
-    },
+    reportCoverage: 'codecov',
     test: {
-      description: 'Run Jest test suite on code base.',
       default: 'jest --config jest.config.json --runInBand',
-      coverage: {
-        description: 'Generate coverage data.',
-        script: series.nps('test --coverage --silent')
-      },
-      watch: {
-        description: 'Watch test suite.',
-        script: series.nps('test --watch')
-      }
+      coverage: series.nps('test --coverage --silent'),
+      watch: series.nps('test --watch')
     },
     validate: {
-      description: 'Validate code base against linting & tests.',
       default: concurrent.nps('lint', 'test'),
-      withCoverage: {
-        description: 'Validate code & output coverage data.',
-        script: concurrent.nps('lint', 'test.coverage')
-      }
+      withCoverage: concurrent.nps('lint', 'test.coverage')
     }
   }
 }
-

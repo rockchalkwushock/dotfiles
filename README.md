@@ -24,8 +24,8 @@ git clone https://github.com/rockchalkwushock/dotfiles.git
 # save your dotfiles somewhere prior to moving my dotfiles to your home directory.
 
 # Install Homebrew if you have not
-# If you have Homebrew update brew.sh as needed and then:
-source brew.sh
+# If you have Homebrew installed already:
+brew bundle # all taps/formulae/casks/MacApps will be installed
 
 # and finally:
 source .bash_profile

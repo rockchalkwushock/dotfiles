@@ -1,22 +1,17 @@
-
 ###########################################
 # THIS FILE IS WHAT WILL BE READ UPON
 # OPENING TERMINAL.
 ###########################################
 
 # Add path from `yarn global bin` to the `$PATH` for `yarn global` usage.
-export PATH="/usr/local/Cellar/node/7.10.0/bin:$PATH";
+export PATH="$HOME/.node_modules_global/bin:$PATH";
 
 # Message about shorcuts:
-echo ".. = cd ..";
-echo "... = cd ../..";
-echo "D = cd Desktop";
-echo "clr = clear";
-echo "rmf = rm -rf";
+echo "Common Aliases: .. , ..., cleanup, clr, globals, pkgUpdates, update";
 
 # Load dotfiles
 for file in ~/.{bash_aliases,bash_prompt}; do
-	[ -r "$file" ] && [ -f "$file" ] && source "$file";
+        [ -r "$file" ] && [ -f "$file" ] && source "$file";
 done;
 unset file;
 
@@ -31,6 +26,5 @@ shopt -s cdspell;
 
 # Add tab completion for bash & git.
 if [ -f $(brew --prefix)/etc/bash_completion ]; then
-	. $(brew --prefix)/etc/bash_completion
+        . $(brew --prefix)/etc/bash_completion
 fi
-
