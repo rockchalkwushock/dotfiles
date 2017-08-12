@@ -15,6 +15,7 @@ alias ...="cd ../.."
 alias ls="command ls -la"
 alias clr="command clear"
 alias rmf="command rm -rf"
+alias go="cd $PWD/Desktop/WIP"
 
 #################################
 # Running updates, cleaning, etc.

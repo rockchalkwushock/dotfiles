@@ -7,10 +7,10 @@
 export PATH="$HOME/.node_modules_global/bin:$PATH";
 
 # Message about shorcuts:
-echo "Common Aliases: .. , ..., cleanup, clr, globals, pkgUpdates, rmf, update";
+echo "Common Aliases: .. , ..., cleanup, clr, globals, go, pkgUpdates, rmf, update";
 
 # Load dotfiles
-for file in ~/.{bash_aliases,bash_prompt}; do
+for file in ~/.{bash_aliases,bash_prompt,functions}; do
         [ -r "$file" ] && [ -f "$file" ] && source "$file";
 done;
 unset file;
