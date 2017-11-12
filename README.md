@@ -33,10 +33,6 @@ source .zshrc
 
 ![get versions](https://github.com/rockchalkwushock/dotfiles/blob/zsh/screenshots/get_versions.png "get versions function")
 
-![git 1](https://github.com/rockchalkwushock/dotfiles/blob/zsh/screenshots/git-1.png "updates and new files")
-
-![git 2](https://github.com/rockchalkwushock/dotfiles/blob/zsh/screenshots/git-2.png "committed")
-
-![git 3](https://github.com/rockchalkwushock/dotfiles/blob/zsh/screenshots/git-3.png "clean")
+![git](https://github.com/rockchalkwushock/dotfiles/blob/zsh/screenshots/git.png "git workflow")
 
 Remember this is a work in progress and more is coming!
