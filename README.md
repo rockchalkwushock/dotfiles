@@ -14,9 +14,7 @@ Repository for holding all of my dotfiles.
 
 1. Run installation script for [`homebrew`](https://brew.sh) if not already installed!!!
 2. Add your name & email in `.gitconfig`.
-3. The path being exported in `.bash_profile` could be different for you so check! Update as needed.
-4. If you have any other dotfiles you wish to be used upon startup of terminal add them [here](https://github.com/rockchalkwushock/dotfiles/blob/master/.bash_profile#L18).
-
+3. Update `export` paths as needed in `.zshrc`.
 ## Usage
 
 ```sh
@@ -28,7 +26,17 @@ git clone https://github.com/rockchalkwushock/dotfiles.git
 brew bundle # all taps/formulae/casks/MacApps will be installed
 
 # and finally:
-source .bash_profile
+source .zshrc
 ```
+
+## Screenshots
+
+![get versions](https://github.com/rockchalkwushock/dotfiles/blob/zsh/screenshots/get_versions.png "get versions function")
+
+![git 1](https://github.com/rockchalkwushock/dotfiles/blob/zsh/screenshots/git-1.png "updates and new files")
+
+![git 2](https://github.com/rockchalkwushock/dotfiles/blob/zsh/screenshots/git-2.png "committed")
+
+![git 3](https://github.com/rockchalkwushock/dotfiles/blob/zsh/screenshots/git-3.png "clean")
 
 Remember this is a work in progress and more is coming!
