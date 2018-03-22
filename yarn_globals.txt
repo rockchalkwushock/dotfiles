@@ -1,0 +1,29 @@
+yarn global v1.5.1
+info "all-contributors-cli@4.11.1" has binaries:
+   - all-contributors
+info "create-bot@1.0.3" has binaries:
+   - create-bot
+info "create-react-app@1.5.2" has binaries:
+   - create-react-app
+info "create-react-native-app@1.0.0" has binaries:
+   - create-react-native-app
+info "gatsby-cli@1.1.47" has binaries:
+   - gatsby
+info "jest@22.4.3" has binaries:
+   - jest
+info "mocha@5.0.4" has binaries:
+   - mocha
+   - _mocha
+info "now@10.2.1" has binaries:
+   - now
+info "react-native-cli@2.0.1" has binaries:
+   - react-native
+info "semantic-release-cli@3.6.4" has binaries:
+   - semantic-release-cli
+info "snyk@1.70.2" has binaries:
+   - snyk
+info "vue-cli@2.9.3" has binaries:
+   - vue
+   - vue-init
+   - vue-list
+Done in 16.78s.
