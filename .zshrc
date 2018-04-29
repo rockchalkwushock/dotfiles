@@ -34,6 +34,12 @@ export PATH="$PATH:/opt/yarn-[version]/bin"
 # YARN GLOBAL BINARIES
 export PATH="$PATH:`yarn global bin`"
 
+# FOR CORRECT PYTHON VERSION SYMLINK
+export PATH=/usr/local/bin:/usr/local/sbin:$PATH
+
+# ANACONDA PATH
+export PATH=/usr/local/anaconda3/bin:"$PATH"
+
 # Make VS Code the default editor.
 export EDITOR='code';
 
@@ -83,6 +89,8 @@ get_versions() {
   local brew_version=$(brew --version 2>/dev/null)
   local create_react_app_version=$(create-react-app --version 2>/dev/null)
   local elixir_version=$(elixir --version 2>/dev/null)
+  local elm_version=$(elm --version 2>/dev/null)
+  local exp_version=$(exp --version 2>/dev/null)
   local git_version=$(git --version 2>/dev/null)
   local macos_version=$(defaults read loginwindow SystemVersionStampAsString 2>/dev/null)
   local mongo_version=$(mongo --version 2>/dev/null)
@@ -91,7 +99,10 @@ get_versions() {
   local npm_version=$(npm --version 2>/dev/null)
   local nvm_version=$(nvm --version 2>/dev/null)
   local phx_version=$(mix phx.new -v 2>/dev/null)
+  local pip_version=$(pip --version 2>/dev/null)
   local psql_version=$(psql --version 2>/dev/null)
+  local python2_version=$(python2 --version 2>/dev/null)
+  local python3_version=$(python3 --version 2>/dev/null)
   local ruby_version=$(ruby --version 2>/dev/null)
   local yarn_version=$(yarn --version 2>/dev/null)
   local zsh_version=$(zsh --version 2>/dev/null)
@@ -99,6 +110,8 @@ get_versions() {
   echo "brew:----------------- ${brew_version:9:5}"
   echo "create-react-app:----- ${create_react_app_version}"
   echo "elixir:--------------- ${elixir_version:130}"
+  echo "elm:------------------ ${elm_version}"
+  echo "exp:------------------ ${exp_version}"
   echo "git:------------------ ${git_version:12}"
   echo "macOS:---------------- ${macos_version}"
   echo "mongo:---------------- ${mongo_version:23:5}"
@@ -107,10 +120,12 @@ get_versions() {
   echo "npm:------------------ ${npm_version}"
   echo "nvm:------------------ ${nvm_version}"
   echo "phoenix:-------------- ${phx_version:9}"
+  echo "pip:------------------ ${pip_version:4:6}"
+  echo "python3:-------------- ${python3_version:7:12}"
   echo "psql:----------------- ${psql_version:18}"
   echo "ruby:----------------- ${ruby_version:5:9}"
   echo "yarn:----------------- ${yarn_version}"
-  echo "zsh:------------------ ${zsh_version:4:5}"
+  echo "zsh:------------------ ${zsh_version:4:4}"
 }
 
 # Yarn
@@ -178,3 +193,4 @@ autoload -U compinit && compinit
 
 source $ZSH/oh-my-zsh.sh
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
