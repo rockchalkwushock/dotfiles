@@ -1,28 +1,11 @@
-yarn global v1.6.0
-info "all-contributors-cli@4.11.1" has binaries:
-   - all-contributors
-info "create-react-app@1.5.2" has binaries:
+yarn global v1.19.2
+info "create-react-app@3.2.0" has binaries:
    - create-react-app
-info "create-react-native-app@1.0.0" has binaries:
-   - create-react-native-app
-info "exp@53.1.0" has binaries:
-   - exp
-info "gatsby-cli@1.1.51" has binaries:
+info "expo-cli@3.9.0" has binaries:
+   - expo
+   - expo-cli
+info "gatsby-cli@2.8.13" has binaries:
    - gatsby
-info "jasmine@3.1.0" has binaries:
-   - jasmine
-info "jest@22.4.3" has binaries:
-   - jest
-info "now@11.1.7" has binaries:
+info "now@16.6.0" has binaries:
    - now
-info "react-native-cli@2.0.1" has binaries:
-   - react-native
-info "semantic-release-cli@3.6.7" has binaries:
-   - semantic-release-cli
-info "snyk@1.74.0" has binaries:
-   - snyk
-info "vue-cli@2.9.3" has binaries:
-   - vue
-   - vue-init
-   - vue-list
-Done in 1.35s.
+Done in 4.04s.
