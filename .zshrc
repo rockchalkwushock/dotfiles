@@ -20,10 +20,6 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Path to your oh-my-zsh installation.
 export ZSH=/Users/rockchalkwushock/.oh-my-zsh
 
-# NVM
-export NVM_DIR="$HOME/.nvm"
-[ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
-
 # Make VS Code the default editor.
 export EDITOR='code';
 
@@ -92,6 +88,9 @@ plugins+=(zsh-autosuggestions)
 # Custom plugin (see oh-my-zsh/custom)
 # This mist be the last plugin sourced before initializing OMZSH.
 plugins+=(zsh-syntax-highlighting)
+
+# Adds nvm integration.
+plugins+=(zsh-nvm)
 
 #################################################
 #----------------- Sourcing --------------------#

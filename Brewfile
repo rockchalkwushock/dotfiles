@@ -9,7 +9,6 @@ brew "elixir"
 brew "git"
 brew "libmemcached"
 brew "mas"
-brew "nvm"
 brew "python"
 brew "pipenv"
 brew "postgresql", restart_service: true
