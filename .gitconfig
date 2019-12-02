@@ -18,6 +18,7 @@
 	# Make `git rebase` safer on macOS
 	# More info: <http://www.git-tower.com/blog/make-git-rebase-safe-on-osx/>
 	trustctime = false
+	editor = code --wait
 
 [color "branch"]
 
@@ -57,6 +58,7 @@
 	default = current
 
 [user]
-	email = #TODO:
-	name = #TODO:
-
+	email = rockchalkwushock@icloud.com
+	name = Cody Brunner
+[credential]
+	helper = osxkeychain
