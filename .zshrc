@@ -35,6 +35,7 @@ alias globals="yarn global upgrade-interactive"
 alias makeBrew="brew bundle dump --force"
 alias rmf="command rm -rf"
 alias zs="source ~/.zshrc"
+alias gcm="git checkout master"
 
 #################################################
 #---------------- Functions --------------------#
