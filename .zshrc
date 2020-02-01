@@ -70,16 +70,6 @@ copy2Cloud() {
 # https://github.com/zsh-users/zsh-completions
 plugins=(zsh-completions)
 
-# FROM: https://gist.github.com/ctechols/ca1035271ad134841284#gistcomment-2609770
-# On slow systems, checking the cached .zcompdump file to see if it must be
-# regenerated adds a noticable delay to zsh startup.  This little hack restricts
-# it to once a day.
-autoload -Uz compinit
-for dump in ~/.zcompdump(N.mh+24); do
-  compinit
-done
-compinit -C
-
 # ZSH Autosuggestions (as you type)
 # Custom plugin (see oh-my-zsh/custom)
 # See https://github.com/tarruda/zsh-autosuggestions
@@ -92,6 +82,20 @@ plugins+=(zsh-syntax-highlighting)
 
 # Adds nvm integration.
 plugins+=(zsh-nvm)
+
+# Adds docker completions.
+plugins+=(docker)
+plugins+=(docker-compose)
+
+# FROM: https://gist.github.com/ctechols/ca1035271ad134841284#gistcomment-2609770
+# On slow systems, checking the cached .zcompdump file to see if it must be
+# regenerated adds a noticable delay to zsh startup.  This little hack restricts
+# it to once a day.
+autoload -Uz compinit
+for dump in ~/.zcompdump(N.mh+24); do
+  compinit
+done
+compinit -C
 
 #################################################
 #----------------- Sourcing --------------------#
