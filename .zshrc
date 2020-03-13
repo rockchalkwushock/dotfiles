@@ -36,6 +36,8 @@ alias makeBrew="brew bundle dump --force"
 alias rmf="command rm -rf"
 alias zs="source ~/.zshrc"
 alias gcm="git checkout master"
+# Lists branches by date last worked in with relative dates.
+alias branches="git for-each-ref --sort='-authordate:iso8601' --format=' %(authordate:relative)%09%(refname:short)' refs/heads"
 
 #################################################
 #---------------- Functions --------------------#
