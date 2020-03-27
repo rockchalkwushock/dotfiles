@@ -13,6 +13,7 @@ brew "python@3.8"
 brew "pipenv"
 brew "postgresql", restart_service: true
 brew "python"
+brew "redis", restart_service: true
 brew "watchman"
 brew "yarn"
 brew "zsh"
