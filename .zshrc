@@ -9,6 +9,7 @@ fi
 #---------------- Variables --------------------#
 #################################################
 
+APPOINTLET_DIR="$HOME/Desktop/Appointlet"
 CLOUDPATH="$HOME/Library/Mobile Documents/com~apple~CloudDocs/dotfiles"
 DEFAULT_USER=$USER
 ZSH_THEME="powerlevel10k/powerlevel10k"
@@ -63,6 +64,66 @@ copy2Cloud() {
         echo "$i copied to iCloud.";
       fi;
     done;
+  fi;
+}
+
+# Function for jumping to work directories and getting back into work.
+# Use: appointlet dashboard
+# STILL A WIP!!!! VERY NAIVE AND LACKING!!!
+appointlet() {
+  if [ $1 -eq "" ]; then
+    echo 'Must provide directory you want to jump too as first argument';
+    return 1;
+  else
+    # Jump to directory.
+    cd $APPOINTLET_DIR/$1;
+
+    if [ "$1" = 'scheduler' ]; then
+      # The scheduler uses a specific version of node.
+      nvm use 6.11.0;
+    else
+      # Load current stable version node.
+      nvm use stable;
+    fi;
+
+    # Get current working branch.
+    currentBranch=$(git rev-parse --abbrev-ref HEAD 2>&1)
+    git checkout master;
+    git pull;
+    git checkout $currentBranch;
+    git rebase master;
+  fi;
+}
+
+# Function for working on the v5 API.
+v5() {
+  dir=$(pwd);
+  if [ $dir = "$APPOINTLET_DIR/api" ]; then
+    if [ "$1" = "run" ]; then
+    pipenv run ./manage.py runserver;
+    return 0;
+    elif [ "$1" = "install" ]; then
+      pipenv install;
+      return 0;
+    elif [ "$1" = "makemigrations" ]; then
+      pipenv run ./manage.py makemigrations;
+      return 0;
+    elif [ "$1" = "migrate" ]; then
+      pipenv run ./manage.py migrate;
+      return 0;
+    elif [ "$1" = "token" ]; then
+      # Need to handle missing variable here.
+      pipenv run ./manage.py addstatictoken $2;
+      return 0;
+    elif [ "$1" = "static" ]; then
+      pipenv run ./manage.py collectstatic;
+      return 0;
+    elif [ "$1" = "shell" ]; then
+      pipenv shell;
+      return 0;
+    fi;
+  else
+    echo "You are not in the v5 API directory!";
   fi;
 }
 
