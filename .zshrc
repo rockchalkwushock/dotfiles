@@ -41,6 +41,7 @@ alias zs="source .zshrc"
 alias gcm="git checkout master"
 # Lists branches by date last worked in with relative dates.
 alias branches="git for-each-ref --sort='-authordate:iso8601' --format=' %(authordate:relative)%09%(refname:short)' refs/heads"
+alias ll="ls -al"
 
 #################################################
 #---------------- Functions --------------------#
@@ -69,9 +70,8 @@ copy2Cloud() {
 
 # Function for jumping to work directories and getting back into work.
 # Use: appointlet dashboard
-# STILL A WIP!!!! VERY NAIVE AND LACKING!!!
 appointlet() {
-  if [ $1 -eq "" ]; then
+  if [ $1 = "" ]; then
     echo 'Must provide directory you want to jump too as first argument';
     return 1;
   else
@@ -85,13 +85,7 @@ appointlet() {
       # Load current stable version node.
       nvm use stable;
     fi;
-
-    # Get current working branch.
-    currentBranch=$(git rev-parse --abbrev-ref HEAD 2>&1)
-    git checkout master;
-    git pull;
-    git checkout $currentBranch;
-    git rebase master;
+    return 0;
   fi;
 }
 
@@ -100,8 +94,11 @@ v5() {
   dir=$(pwd);
   if [ $dir = "$APPOINTLET_DIR/api" ]; then
     if [ "$1" = "run" ]; then
-    pipenv run ./manage.py runserver;
-    return 0;
+      pipenv run heroku local;
+      return 0;
+    elif [ "$1" = "tunnel" ]; then
+      ngrok http 5000 -subdomain=cody-appointlet;
+      return 0;
     elif [ "$1" = "install" ]; then
       pipenv install;
       return 0;
