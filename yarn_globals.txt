@@ -1,11 +1,14 @@
-yarn global v1.19.2
-info "create-react-app@3.2.0" has binaries:
-   - create-react-app
-info "expo-cli@3.9.0" has binaries:
-   - expo
-   - expo-cli
-info "gatsby-cli@2.8.13" has binaries:
+yarn global v1.22.4
+info "create-next-app@9.4.2" has binaries:
+   - create-next-app
+info "depcheck@0.9.2" has binaries:
+   - depcheck
+info "gatsby-cli@2.12.34" has binaries:
    - gatsby
-info "now@16.6.0" has binaries:
+info "lerna@3.21.0" has binaries:
+   - lerna
+info "now@19.0.1" has binaries:
    - now
-Done in 4.04s.
+info "serve@11.3.1" has binaries:
+   - serve
+Done in 2.26s.

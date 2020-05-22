@@ -36,9 +36,11 @@ cask "spotify"
 cask "telegram"
 cask "visual-studio-code"
 cask "zoomus"
+mas "Be Focused", id: 973134470
 mas "Keynote", id: 409183694
 mas "NordVPN IKE", id: 1116599239
 mas "Numbers", id: 409203825
+mas "OmniFocus", id: 1346203938
 mas "Pages", id: 409201541
 mas "Paste", id: 967805235
 mas "Spark", id: 1176895641
