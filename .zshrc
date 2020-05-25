@@ -10,7 +10,7 @@ fi
 #################################################
 
 APPOINTLET_DIR="$HOME/Desktop/Appointlet"
-PERSONAL_DIR="$HOME/Desktop/PersonalProjects"
+PERSONAL_DIR="$HOME/Desktop/Personal"
 CLOUDPATH="$HOME/Library/Mobile Documents/com~apple~CloudDocs/dotfiles"
 DEFAULT_USER=$USER
 ZSH_THEME="powerlevel10k/powerlevel10k"
@@ -42,7 +42,6 @@ alias zs="source .zshrc"
 alias gcm="git checkout master"
 # Lists branches by date last worked in with relative dates.
 alias branches="git for-each-ref --sort='-authordate:iso8601' --format=' %(authordate:relative)%09%(refname:short)' refs/heads"
-alias ll="ls -al"
 
 #################################################
 #---------------- Functions --------------------#
@@ -167,17 +166,13 @@ plugins=(zsh-completions)
 # See https://github.com/tarruda/zsh-autosuggestions
 plugins+=(zsh-autosuggestions)
 
+# Adds nvm integration.
+plugins+=(zsh-nvm)
+
 # Highlight terminal commands for correctness on-the-fly
 # Custom plugin (see oh-my-zsh/custom)
 # This mist be the last plugin sourced before initializing OMZSH.
 plugins+=(zsh-syntax-highlighting)
-
-# Adds nvm integration.
-plugins+=(zsh-nvm)
-
-# Adds docker completions.
-plugins+=(docker)
-plugins+=(docker-compose)
 
 # FROM: https://gist.github.com/ctechols/ca1035271ad134841284#gistcomment-2609770
 # On slow systems, checking the cached .zcompdump file to see if it must be
@@ -193,6 +188,7 @@ compinit -C
 #----------------- Sourcing --------------------#
 #################################################
 
+# Load oh-my-zsh.
 source $ZSH/oh-my-zsh.sh
 
 #################################################

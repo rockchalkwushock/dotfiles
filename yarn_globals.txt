@@ -1,14 +1,13 @@
 yarn global v1.22.4
 info "create-next-app@9.4.2" has binaries:
    - create-next-app
-info "depcheck@0.9.2" has binaries:
-   - depcheck
-info "gatsby-cli@2.12.34" has binaries:
+info "create-react-app@3.4.1" has binaries:
+   - create-react-app
+info "gatsby@2.22.9" has binaries:
    - gatsby
-info "lerna@3.21.0" has binaries:
-   - lerna
-info "now@19.0.1" has binaries:
-   - now
 info "serve@11.3.1" has binaries:
    - serve
-Done in 2.26s.
+info "vercel@19.0.1" has binaries:
+   - vc
+   - vercel
+Done in 15.56s.
