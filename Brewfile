@@ -20,18 +20,21 @@ cask "alfred"
 cask "avira-antivirus"
 cask "bartender"
 cask "brave-browser"
+cask "discord"
 cask "firefox"
 cask "font-hack-nerd-font"
 cask "font-victormono-nerd-font"
 cask "google-chrome"
 cask "iterm2"
 cask "ngrok"
+cask "origin"
 cask "postico"
 cask "slack"
 cask "spotify"
+cask "steam"
+cask "telegram"
 cask "visual-studio-code"
 cask "zoomus"
-mas "Be Focused", id: 973134470
 mas "iStat Menus", id: 1319778037
 mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
