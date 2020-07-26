@@ -36,12 +36,16 @@ export PATH="/usr/local/opt/python@3.8/bin:$PATH"
 
 alias clr="command clear"
 alias globals="yarn global upgrade-interactive"
-alias makeBrew="brew bundle dump --force"
+# Creates a Brewfile if not found, overwrites current if there is.
+alias make_brewfile="brew bundle dump --force"
 alias rmf="command rm -rf"
 alias zs="source .zshrc"
 alias gcm="git checkout master"
+alias grm="git rebase master"
 # Lists branches by date last worked in with relative dates.
 alias branches="git for-each-ref --sort='-authordate:iso8601' --format=' %(authordate:relative)%09%(refname:short)' refs/heads"
+# Should Postgres shit down it's leg this command will 99% of the time fix the prob.
+alias recov_postgres="command rm ./usr/local/var/postgres/postmaster.pid"
 
 #################################################
 #---------------- Functions --------------------#
