@@ -10,6 +10,7 @@ fi
 #################################################
 
 APPOINTLET_DIR="$HOME/Desktop/Appointlet"
+DOTFILES_DIR="$HOME/Desktop/dotfiles"
 PERSONAL_DIR="$HOME/Desktop/Personal"
 CLOUDPATH="$HOME/Library/Mobile Documents/com~apple~CloudDocs/dotfiles"
 DEFAULT_USER=$USER
@@ -91,6 +92,11 @@ appointlet() {
     fi;
     return 0;
   fi;
+}
+
+# Function for jumping to dotfiles.
+dotfiles() {
+  cd $DOTFILES_DIR;
 }
 
 # Function for jumping to my personal projects.
