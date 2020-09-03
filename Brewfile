@@ -34,12 +34,15 @@ cask "monitorcontrol"
 cask "ngrok"
 cask "origin"
 cask "postico"
+cask "postman"
 cask "protonmail-bridge"
 cask "slack"
 cask "spotify"
 cask "telegram"
 cask "visual-studio-code"
+cask "vivaldi"
 mas "iStat Menus", id: 1319778037
+mas "NordVPN IKE", id: 1116599239
 mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
 mas "Paste", id: 967805235

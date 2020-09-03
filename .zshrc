@@ -41,8 +41,11 @@ alias globals="yarn global upgrade-interactive"
 alias make_brewfile="brew bundle dump --force"
 alias rmf="command rm -rf"
 alias zs="source .zshrc"
-alias gcm="git checkout master"
-alias grm="git rebase master"
+alias gc="git checkout"
+alias gr="git rebase"
+alias gs="git stash"
+alias pull="git pull"
+alias push="git push"
 # Lists branches by date last worked in with relative dates.
 alias branches="git for-each-ref --sort='-authordate:iso8601' --format=' %(authordate:relative)%09%(refname:short)' refs/heads"
 # Should Postgres shit down it's leg this command will 99% of the time fix the prob.

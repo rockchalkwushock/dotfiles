@@ -15,10 +15,11 @@
 
 [core]
 
+	editor = code --wait
+	excludesfile = ~/.gitignore
 	# Make `git rebase` safer on macOS
 	# More info: <http://www.git-tower.com/blog/make-git-rebase-safe-on-osx/>
 	trustctime = false
-	editor = code --wait
 
 [color "branch"]
 
@@ -39,6 +40,10 @@
 	changed = green
 	untracked = cyan
 
+[fetch]
+
+	prune = true
+
 [help]
 
 	# Automatically correct & execute mistyped commands
@@ -48,6 +53,10 @@
 
 	# Include summaries of merged commits in newly created merge commit messages
 	log = true
+
+[pull]
+
+	rebase = false
 
 [push]
 
