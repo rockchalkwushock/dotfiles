@@ -10,9 +10,9 @@ brew "elixir"
 brew "exercism"
 brew "git"
 brew "mas"
-brew "python@3.8"
 brew "pipenv"
 brew "postgresql", restart_service: true
+brew "python@3.8", link: true
 brew "redis", restart_service: true
 brew "watchman"
 brew "yarn"
@@ -21,6 +21,7 @@ brew "gigalixir/brew/gigalixir"
 brew "heroku/brew/heroku"
 cask "alfred"
 cask "bartender"
+cask "bitwarden"
 cask "brave-browser"
 cask "cryptomator"
 cask "discord"
@@ -29,16 +30,16 @@ cask "font-hack-nerd-font"
 cask "font-victormono-nerd-font"
 cask "google-chrome"
 cask "iterm2"
-cask "monitorcontrol"
-cask "ngrok"
+cask "loom"
 cask "postico"
 cask "postman"
 cask "protonmail-bridge"
 cask "slack"
 cask "spotify"
-cask "telegram"
 cask "visual-studio-code"
-cask "vivaldi"
+mas "AdBlock", id: 1402042596
+mas "Day One", id: 1055511498
+mas "Flow", id: 1423210932
 mas "iStat Menus", id: 1319778037
 mas "NordVPN IKE", id: 1116599239
 mas "Numbers", id: 409203825

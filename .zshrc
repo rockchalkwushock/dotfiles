@@ -31,25 +31,55 @@ export NVM_LAZY_LOAD=true
 
 # Python 3
 export PATH="/usr/local/opt/python@3.8/bin:$PATH"
+
 #################################################
 #---------------- Aliases ----------------------#
 #################################################
 
-alias clr="command clear"
-alias globals="yarn global upgrade-interactive"
-# Creates a Brewfile if not found, overwrites current if there is.
-alias make_brewfile="brew bundle dump --force"
-alias rmf="command rm -rf"
-alias zs="source .zshrc"
+# Git related aliases
+
+# Lists branches by date last worked in with relative dates.
+alias branches="git for-each-ref --sort='-authordate:iso8601' --format=' %(authordate:relative)%09%(refname:short)' refs/heads"
 alias gc="git checkout"
 alias gr="git rebase"
 alias gs="git stash"
+alias h_reset="git reset --hard"
 alias pull="git pull"
 alias push="git push"
-# Lists branches by date last worked in with relative dates.
-alias branches="git for-each-ref --sort='-authordate:iso8601' --format=' %(authordate:relative)%09%(refname:short)' refs/heads"
+alias s_reset="git reset --soft"
+# Use the below aliases in tandem. Many thanks to @erikras
+# https://twitter.com/erikras/status/1304406059474472960
+alias unwip="git reset HEAD~"
+alias wip="git commit -a -m 'WIP' --no-verify"
+
+# Homebrew related aliases
+
+# Creates a Brewfile if not found, overwrites current if there is.
+alias cleanup="brew cleanup"
+alias make_brewfile="brew bundle dump --force"
+alias outdated="brew outdated"
+alias services="brew services list"
+alias update="brew update"
+alias upgrade="brew upgrade"
+
+# System related aliases
+
+alias clr="command clear"
 # Should Postgres shit down it's leg this command will 99% of the time fix the prob.
 alias recov_postgres="command rm ./usr/local/var/postgres/postmaster.pid"
+alias rmf="command rm -rf"
+alias zs="source .zshrc"
+
+# Yarn related aliases
+
+alias yb="yarn build"
+alias yd="yarn dev" # Specific to NextJS
+alias ygl="yarn global list"
+alias ygu="yarn global upgrade-interactive"
+alias ys="yarn start"
+alias yt="yarn test"
+alias ytc="yarn type-check" # Common script for running TypeScript.
+alias yu="yarn upgrade-interactive --latest"
 
 #################################################
 #---------------- Functions --------------------#
@@ -120,13 +150,14 @@ v5() {
   if [ "$1" = "help" ]; then
     echo 'run-heroku     --- pipenv run heroku local';
     echo 'run-local      --- pipenv run ./manage.py runserver 5000';
-    echo 'tunnel         --- ngrok http 5000 -subdomain=cody-appointlet';
     echo 'install        --- pipenv install';
     echo 'makemigrations --- pipenv run ./manage.py makemigrations';
     echo 'migrate        --- pipenv run ./manage.py migrate';
     echo 'token          --- pipenv run ./manage.py addstatictoken $1';
     echo 'static         --- pipenv run ./manage.py collectstatic';
-    echo 'shell          --- pipenv run ./manage.py shell'
+    echo 'shell          --- pipenv run ./manage.py shell';
+    echo 'flush          --- pipenv run ./manage.py flush';
+    echo 'reset          --- pipenv run ./manage.py reset_db';
     return 0;
   else
     dir=$(pwd);
@@ -136,9 +167,6 @@ v5() {
         return 0;
       elif [ "$1" = "run-local" ]; then
         pipenv run ./manage.py runserver 5000;
-        return 0;
-      elif [ "$1" = "tunnel" ]; then
-        ngrok http 5000 -subdomain=cody-appointlet;
         return 0;
       elif [ "$1" = "install" ]; then
         pipenv install;
@@ -158,6 +186,12 @@ v5() {
         return 0;
       elif [ "$1" = "shell" ]; then
         pipenv run ./manage.py shell;
+        return 0;
+      elif [ "$1" = "flush" ]; then
+        pipenv run ./manage.py flush;
+        return 0;
+      elif [ "$1" = "reset" ]; then
+        pipenv run ./manage.py reset_db;
         return 0;
       fi;
     else
