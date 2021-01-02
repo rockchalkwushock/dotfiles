@@ -28,6 +28,10 @@ export EDITOR='code';
 
 # Lazy loads nvm.
 export NVM_LAZY_LOAD=true
+# Look for .nvmrc and use that version automagically.
+export NVM_AUTO_USE=true
+# Gives access to auto-complete in terminal.
+export NVM_COMPLETION=true
 
 # Python 3
 export PATH="/usr/local/opt/python@3.8/bin:$PATH"
