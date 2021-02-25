@@ -13,6 +13,14 @@
 	# Amend the currently staged files to the latest commit.
 	amend = commit --amend --reuse-message=HEAD
 
+[core]
+
+	editor = code --wait
+	excludesfile = ~/.gitignore
+	# Make `git rebase` safer on macOS
+	# More info: <http://www.git-tower.com/blog/make-git-rebase-safe-on-osx/>
+	trustctime = false
+
 [color "branch"]
 
 	current = yellow reverse
@@ -32,18 +40,6 @@
 	changed = green
 	untracked = cyan
 
-[core]
-
-	editor = code --wait
-	excludesfile = ~/.gitignore
-	# Make `git rebase` safer on macOS
-	# More info: <http://www.git-tower.com/blog/make-git-rebase-safe-on-osx/>
-	trustctime = false
-
-[credential]
-
-	helper = osxkeychain
-
 [fetch]
 
 	prune = true
@@ -52,10 +48,6 @@
 
 	# Automatically correct & execute mistyped commands
 	autocorrect = 1
-
-[interactive]
-
-  diffFilter = delta --color-only
 
 [merge]
 
@@ -75,6 +67,5 @@
 	default = current
 
 [user]
-
 	email = rockchalkwushock@icloud.com
 	name = Cody Brunner
