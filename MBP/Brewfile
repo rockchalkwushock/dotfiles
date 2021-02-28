@@ -1,6 +1,7 @@
 tap "gigalixir/brew"
 tap "homebrew/bundle"
 tap "homebrew/cask"
+tap "homebrew/cask-drivers"
 tap "homebrew/cask-fonts"
 tap "homebrew/core"
 tap "homebrew/services"
@@ -26,6 +27,7 @@ cask "iterm2"
 cask "postico"
 cask "spotify"
 cask "visual-studio-code"
+cask "yubico-yubikey-manager"
 mas "AdGuard for Safari", id: 1440147259
 mas "CleanMyMac X", id: 1339170533
 mas "Day One", id: 1055511498
