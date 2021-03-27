@@ -25,6 +25,9 @@ export ZSH=/Users/codybrunner/.oh-my-zsh;
 # Make VSCode the default editor.
 export EDITOR='code';
 
+# Look for .nvmrc & use that version automagically.
+# export NVM_AUTO_USE=true;
+
 # Enables auto-complete for nvm.
 export NVM_COMPLETION=true;
 
@@ -63,11 +66,9 @@ alias upgrade="brew upgrade";
 # System related aliases
 
 alias clr="command clear";
-alias hide="defaults write com.apple.finder CreateDesktop false; killall Finder;"
 alias killport=find_and_kill;
 alias recov_postgres="command rm ./usr/local/var/postgres/postmaster.pid";
 alias rmf="rm -rf";
-alias show="defaults write com.apple.finder CreateDesktop true; killall Finder;"
 alias zs="source .zshrc";
 
 # Yarn related aliases
