@@ -49,6 +49,10 @@
 	# Automatically correct & execute mistyped commands
 	autocorrect = 1
 
+[init]
+
+	defaultBranch = master
+
 [merge]
 
 	# Include summaries of merged commits in newly created merge commit messages
