@@ -72,21 +72,25 @@ alias rmf="rm -rf";
 alias zs="source .zshrc";
 
 # Yarn related aliases
+# These have been updated to alias the use of pnpm NOT Yarn
+# and to not mess with my own mental modal I am keeping the
+# aliases the same where they can be
 
-alias ya="yarn add";
-alias yb="yarn build";
-alias yc="yarn commit";
-alias yd="yarn dev";
-alias yga="yarn global add";
-alias ygl="yarn global list";
-alias ygr="yarn global remove";
-alias ygu="yarn global upgrade-interactive --latest";
-alias yl="yarn lint";
-alias yr="yarn remove";
-alias ys="yarn start";
-alias yt="yarn test";
-alias ytc="yarn type-check";
-alias yu="yarn upgrade-interactive --latest";
+alias ya="pnpm add";
+alias yb="pnpm run build";
+alias yc="pnpm run commit";
+alias yd="pnpm run dev";
+alias yga="pnpm add -g";
+alias ygl="pnpm ls -g";
+alias ygr="pnpm rm -g";
+alias ygu="pnpm up -g -i";
+alias yi="pnpm i"
+alias yl="pnpm run lint";
+alias yr="pnpm rm";
+alias ys="pnpm start";
+alias yt="pnpm t";
+alias ytc="pnpm run type-check";
+alias yu="pnpm up -i";
 
 ###############################################
 #-----------------Functions-------------------#
