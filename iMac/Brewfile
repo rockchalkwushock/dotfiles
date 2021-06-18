@@ -29,6 +29,7 @@ cask "pgadmin4"
 cask "postgres"
 cask "postico"
 cask "spotify"
+cask "unetbootin"
 cask "veracrypt"
 cask "visual-studio-code"
 mas "AdGuard for Safari", id: 1440147259
