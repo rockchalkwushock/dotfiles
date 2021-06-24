@@ -8,7 +8,6 @@ brew "elixir"
 brew "exercism"
 brew "git"
 brew "mas"
-brew "pnpm"
 brew "redis"
 brew "watchman"
 brew "zsh"
@@ -37,6 +36,7 @@ mas "CleanMyMac X", id: 1339170533
 mas "Day One", id: 1055511498
 mas "Flow", id: 1423210932
 mas "iStat Menus", id: 1319778037
+mas "Journey", id: 1489704689
 mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
 mas "Paste", id: 967805235
