@@ -1,17 +1,18 @@
 [alias]
-	# View abbreviated SHA, description, & history graph of the latest 20 commits.
-	l = log --pretty=oneline -n 20 --graph --abbrev-commit
-
-	# View the current working tree status using the short format.
-	s = status -s
-
-	# Show verbose output about tags, branches, or remotes.
-	tags = tag -l
-	branches = branch -a
-	remotes = remote -v
-
 	# Amend the currently staged files to the latest commit.
 	amend = commit --amend --reuse-message=HEAD
+	b = checkout -b
+	co = checkout
+	cp = cherry-pick
+	# View abbreviated SHA, description, & history graph of the latest 20 commits.
+	l = log --pretty=oneline -n 20 --graph --abbrev-commit
+	remotes = remote -v
+	rh = reset --hard HEAD
+	# View the current working tree status using the short format.
+	s = status -s
+	# Show verbose output about tags, branches, or remotes.
+	tags = tag -l
+	unstage = reset --soft HEAD
 
 [core]
 
@@ -71,5 +72,5 @@
 	default = current
 
 [user]
-	email = rockchalkwushock@icloud.com
+	email = me@codybrunner.dev
 	name = Cody Brunner

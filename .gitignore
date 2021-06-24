@@ -34,3 +34,11 @@
 ehthumbs.db
 Icon?
 Thumbs.db
+
+# VSCode #
+######################
+.vscode
+
+# Eslint #
+######################
+.eslintcache

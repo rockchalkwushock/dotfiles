@@ -9,48 +9,51 @@ fi;
 #-----------------Variables-------------------#
 ###############################################
 
-DOTFILES_DIR="$HOME/dotfiles";
-PROJECTS_DIR="$HOME/Desktop/Projects"
+# Homebrew is not being installed in the default manner.
+# https://github.com/Homebrew/brew/blob/master/docs/Installation.md#alternative-installs
+BREW_LOCAL_DIR="$HOME/homebrew";
 DEFAULT_USER=$USER;
 ICLOUD_PATH="$HOME/Library/Mobile Documents/com~apple~CloudDocs/dotfiles";
+PROJECTS_DIR="$HOME/Desktop/Projects";
+# https://github.com/ohmyzsh/ohmyzsh/issues/6835#issuecomment-390216875
+ZSH_DISABLE_COMPFIX=true;
 ZSH_THEME="powerlevel10k/powerlevel10k";
 
 ###############################################
 #------------------Exports--------------------#
 ###############################################
 
-# Path to oh-my-zsh installation.
-export ZSH=/Users/codybrunner/.oh-my-zsh;
-
 # Make VSCode the default editor.
 export EDITOR='code';
 
-# Look for .nvmrc & use that version automagically.
-# export NVM_AUTO_USE=true;
+# Homebrew
+export HOMEBREW_CASK_OPTS="--appdir=~/Applications --fontdir=/Library/Fonts --require-sha";
+export HOMEBREW_NO_ANALYTICS=true;
+export HOMEBREW_NO_INSTALL_UPGRADE=true;
 
-# Enables auto-complete for nvm.
-export NVM_COMPLETION=true;
+# n-install - This will be added at install time of n-install, leaving it will cause problems.
+# export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin";
 
-# Enables lazy-loading nvm.
-export NVM_LAZY_LOAD=true;
+# Append the local Homebrew path to $PATH.
+export PATH="$BREW_LOCAL_DIR/sbin:$BREW_LOCAL_DIR/bin:$PATH";
+
+# Path to oh-my-zsh installation.
+export ZSH="$HOME/.oh-my-zsh";
 
 ###############################################
 #------------------Aliases--------------------#
 ###############################################
 
 # Elixir/Phoenix aliases
-alias phx_version="mix phx.new --version"
+alias phx_version="mix phx.new --version";
 
 # Git related aliases
 
 alias branches="git for-each-ref --sort='-authordate:iso8601' --format=' %(authordate:relative)%09%(refname:short)' refs/heads";
-alias gc="git checkout";
 alias gr="git rebase";
 alias gs="git stash";
-alias h_reset="git reset --hard";
 alias pull="git pull";
 alias push="git push";
-alias s_reset="git reset --soft";
 alias unwip="git reset HEAD~";
 alias wip="git commit -a -m 'WIP' --no-verify";
 
@@ -66,9 +69,11 @@ alias upgrade="brew upgrade";
 # System related aliases
 
 alias clr="command clear";
-alias killport=find_and_kill;
+alias flushdns="sudo dscacheutil -flushcache;sudo killall -HUP mDNSResponder";
+alias hideFiles='defaults write com.apple.finder AppleShowAllFiles NO; killall Finder /System/Library/CoreServices/Finder.app';
 alias recov_postgres="command rm ./usr/local/var/postgres/postmaster.pid";
 alias rmf="rm -rf";
+alias showFiles='defaults write com.apple.finder AppleShowAllFiles YES; killall Finder /System/Library/CoreServices/Finder.app';
 alias zs="source .zshrc";
 
 # Yarn related aliases
@@ -84,7 +89,7 @@ alias yga="pnpm add -g";
 alias ygl="pnpm ls -g";
 alias ygr="pnpm rm -g";
 alias ygu="pnpm up -g -i";
-alias yi="pnpm i"
+alias yi="pnpm i";
 alias yl="pnpm run lint";
 alias yr="pnpm rm";
 alias ys="pnpm start";
@@ -116,22 +121,7 @@ copy_to_icloud() {
     fi;
 }
 
-# dotfiles
-# - jump to dotfiles directory
-dotfiles() {
-    cd $DOTFILES_DIR;
-}
-
-# find_and_kill
-# - kill the provide port number's process.
-find_and_kill() {
-    if [ $# -eq 0 ]; then
-        echo "Must provide port number.";
-        return 1;
-    else
-        lsof -ti:$1 | xargs kill;
-    fi;
-}
+killport() { lsof -i tcp:"$*" | awk 'NR!=1 {print $2}' | xargs kill -9 ;}
 
 ###############################################
 #------------------Plugins--------------------#
@@ -144,10 +134,6 @@ plugins=(zsh-completions)
 # ZSH Autosuggestions
 # https://github.com/tarruda/zsh-autosuggestions
 plugins+=(zsh-autosuggestions)
-
-# ZSH NVM
-# https://github.com/lukechilds/zsh-nvm
-plugins+=(zsh-nvm)
 
 # ZSH Syntax Highlighting
 # https://github.com/zsh-users/zsh-syntax-highlighting
