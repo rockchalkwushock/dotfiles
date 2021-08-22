@@ -46,4 +46,6 @@ mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
 mas "Paste", id: 967805235
 mas "PhotoSweeper", id: 463362050
+mas "Subtrack", id: 1519946553
 mas "Telegram", id: 747648890
+mas "World Clock", id: 956377119
