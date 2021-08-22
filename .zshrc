@@ -44,8 +44,22 @@ export ZSH="$HOME/.oh-my-zsh";
 #------------------Aliases--------------------#
 ###############################################
 
+# Docker aliases
+alias d="docker";
+alias dv="docker version";
+alias dc="docker-compose";
+alias dcv="docker-compose version";
+
 # Elixir/Phoenix aliases
-alias phx_version="mix phx.new --version";
+alias e_shell="iex -S mix";
+alias mi="mix deps.get";
+alias mc="mix deps.compile";
+alias mm="mix ecto.migrate";
+alias mn="mix new";
+alias mt="mix test";
+alias phxn="mix phx.new";
+alias phxs="mix phx.server";
+alias phxv="mix phx.new --version";
 
 # Git related aliases
 
@@ -69,57 +83,52 @@ alias upgrade="brew upgrade";
 # System related aliases
 
 alias clr="command clear";
-alias flushdns="sudo dscacheutil -flushcache;sudo killall -HUP mDNSResponder";
-alias hideFiles='defaults write com.apple.finder AppleShowAllFiles NO; killall Finder /System/Library/CoreServices/Finder.app';
+alias flush_dns="sudo dscacheutil -flushcache;sudo killall -HUP mDNSResponder";
+alias hide_files='defaults write com.apple.finder AppleShowAllFiles NO; killall Finder /System/Library/CoreServices/Finder.app';
+alias oss="cd ~/OSS";
+alias prj="cd ~/Projects";
 alias recov_postgres="command rm ./usr/local/var/postgres/postmaster.pid";
 alias rmf="rm -rf";
-alias showFiles='defaults write com.apple.finder AppleShowAllFiles YES; killall Finder /System/Library/CoreServices/Finder.app';
+alias show_files='defaults write com.apple.finder AppleShowAllFiles YES; killall Finder /System/Library/CoreServices/Finder.app';
 alias zs="source .zshrc";
 
-# Yarn related aliases
-# These have been updated to alias the use of pnpm NOT Yarn
-# and to not mess with my own mental modal I am keeping the
-# aliases the same where they can be
+# pnpm related aliases
+alias pa="pnpm add";
+alias pb="pnpm run build";
+alias pc="pnpm run commit";
+alias pd="pnpm run dev";
+alias pga="pnpm add -g";
+alias pgl="pnpm ls -g";
+alias pgr="pnpm rm -g";
+alias pgu="pnpm up -g -i";
+alias pi="pnpm i";
+alias prl="pnpm run lint";
+alias prm="pnpm rm";
+alias prs="pnpm start";
+alias pt="pnpm t";
+alias ptc="pnpm run type-check";
+alias pu="pnpm up -i";
 
-alias ya="pnpm add";
-alias yb="pnpm run build";
-alias yc="pnpm run commit";
-alias yd="pnpm run dev";
-alias yga="pnpm add -g";
-alias ygl="pnpm ls -g";
-alias ygr="pnpm rm -g";
-alias ygu="pnpm up -g -i";
-alias yi="pnpm i";
-alias yl="pnpm run lint";
-alias yr="pnpm rm";
-alias ys="pnpm start";
-alias yt="pnpm t";
-alias ytc="pnpm run type-check";
-alias yu="pnpm up -i";
+# Yarn related aliases
+
+alias ya="yarn add";
+alias yb="yarn build";
+alias yc="yarn commit";
+alias yd="yarn dev";
+alias yga="yarn global add";
+alias ygl="yarn global list";
+alias ygr="yarn gloabl remove";
+alias ygu="yarn global upgrade-interactive --latest";
+alias yl="yarn lint";
+alias yr="yarn remove";
+alias ys="yarn start";
+alias yt="yarn test";
+alias ytc="yarn type-check";
+alias yu="yarn upgrade-interactive --latest";
 
 ###############################################
 #-----------------Functions-------------------#
 ###############################################
-
-# copy_to_icloud
-# - sends directories & files to dotfiles directory in iCloud.
-copy_to_icloud() {
-    if [ $# -eq 0 ]; then
-        echo "Must provide a file or directory";
-        return 1;
-    else
-        for i in "$@"
-        do
-            if [ -d $i ]; then
-                cp -R "$i" "$ICLOUD_PATH";
-                echo "$i copied to iCloud";
-            else
-                cp "$i" "$ICLOUD_PATH";
-                echo "$i copied to iCloud";
-            fi;
-        done;
-    fi;
-}
 
 killport() { lsof -i tcp:"$*" | awk 'NR!=1 {print $2}' | xargs kill -9 ;}
 
