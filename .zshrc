@@ -13,8 +13,8 @@ fi;
 # https://github.com/Homebrew/brew/blob/master/docs/Installation.md#alternative-installs
 BREW_LOCAL_DIR="$HOME/homebrew";
 DEFAULT_USER=$USER;
-ICLOUD_PATH="$HOME/Library/Mobile Documents/com~apple~CloudDocs/dotfiles";
-PROJECTS_DIR="$HOME/Desktop/Projects";
+PERSONAL_DIR="$HOME/Desktop/PERSONAL";
+WORK_DIR="$HOME/Desktop/WORK"
 # https://github.com/ohmyzsh/ohmyzsh/issues/6835#issuecomment-390216875
 ZSH_DISABLE_COMPFIX=true;
 ZSH_THEME="powerlevel10k/powerlevel10k";
@@ -64,10 +64,13 @@ alias phxv="mix phx.new --version";
 # Git related aliases
 
 alias branches="git for-each-ref --sort='-authordate:iso8601' --format=' %(authordate:relative)%09%(refname:short)' refs/heads";
+alias gc="git checkout";
 alias gr="git rebase";
 alias gs="git stash";
+alias h_reset="git reset --hard";
 alias pull="git pull";
 alias push="git push";
+alias s_reset="git reset --soft";
 alias unwip="git reset HEAD~";
 alias wip="git commit -a -m 'WIP' --no-verify";
 
@@ -84,12 +87,8 @@ alias upgrade="brew upgrade";
 
 alias clr="command clear";
 alias flush_dns="sudo dscacheutil -flushcache;sudo killall -HUP mDNSResponder";
-alias hide_files='defaults write com.apple.finder AppleShowAllFiles NO; killall Finder /System/Library/CoreServices/Finder.app';
-alias oss="cd ~/OSS";
-alias prj="cd ~/Projects";
 alias recov_postgres="command rm ./usr/local/var/postgres/postmaster.pid";
 alias rmf="rm -rf";
-alias show_files='defaults write com.apple.finder AppleShowAllFiles YES; killall Finder /System/Library/CoreServices/Finder.app';
 alias zs="source .zshrc";
 
 # pnpm related aliases
