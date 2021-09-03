@@ -104,7 +104,15 @@ echo "npm version: $(npm --version)"
 echo "#########################################################################"
 
 echo "#########################################################################"
-echo "11. Install binaries and applications from Brewfile..."
+echo "11. Install PNPM..."
+# Install pnpm using npm, it will be what I use a my package manager for JS dependencies.
+npm install -g pnpm
+echo "pnpm location: $(which pnpm)"
+echo "pnpm version: $(pnpm --version)"
+echo "#########################################################################"
+
+echo "#########################################################################"
+echo "12. Install binaries and applications from Brewfile..."
 # Let `brew` and `mas` do the rest.
 brew bundle --no-lock
 echo "elixir location: $(which elixir)"
@@ -115,8 +123,6 @@ echo "exercism location: $(which exercism)"
 echo "exercism version: $(exercism version)"
 echo "mas location: $(which mas)"
 echo "mas version: $(mas version)"
-echo "pnpm location: $(which pnpm)"
-echo "pnpm version: $(pnpm --version)"
 echo "watchman location: $(which watchman)"
 echo "watchman version: $(watchman --version)"
 echo "zsh location: $(which zsh)"
@@ -124,7 +130,16 @@ echo "zsh version: $(zsh --version)"
 echo "#########################################################################"
 
 echo "#########################################################################"
-echo "12. Installing global PNPM packages..."
+echo "13. Install PNPM with PNPM and remove PNPM with NPM..."
+# First install pnpm via pnpm & then remove pnpm with npm so I don't have two copies.
+pnpm add -g pnpm
+npm uninstall pnpm
+echo "pnpm location: $(which pnpm)"
+echo "pnpm version: $(pnpm --version)"
+echo "#########################################################################"
+
+echo "#########################################################################"
+echo "14. Installing global PNPM packages..."
 # Install global JS binaries.
 pnpm add -g create-next-app supabase vercel
 echo "create-next-app location: $(which create-next-app)"
@@ -136,21 +151,21 @@ echo "vercel version: $(vercel --version)"
 echo "#########################################################################"
 
 echo "#########################################################################"
-echo "13. Installing Oh-My-Zsh..."
+echo "15. Installing Oh-My-Zsh..."
 # Install oh-my-zsh for configuring my terminal.
 # https://github.com/ohmyzsh/ohmyzsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 echo "#########################################################################"
 
 echo "#########################################################################"
-echo "14. Installing Powerlevel10k..."
+echo "16. Installing Powerlevel10k..."
 # Install powerlevel10k for configuring terminal themeing.
 # https://github.com/romkatv/powerlevel10k
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
 echo "#########################################################################"
 
 echo "#########################################################################"
-echo "15. Installing Oh-My-Zsh plugins..."
+echo "17. Installing Oh-My-Zsh plugins..."
 # Install all the plugins referenced in my .zshrc
 # https://github.com/zsh-users/zsh-completions
 git clone https://github.com/zsh-users/zsh-completions ${ZSH_CUSTOM:=~/.oh-my-zsh/custom}/plugins/zsh-completions
@@ -161,22 +176,70 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:
 echo "#########################################################################"
 
 echo "#########################################################################"
-echo "16. Source .zshrc..."
+echo "18. Source .zshrc..."
 # Source the .zshrc to load everything that's been added and configured.
 source .zshrc
 echo "#########################################################################"
 
 echo "#########################################################################"
-echo "17. Installing Hex Package Manager..."
+echo "19. Installing Hex Package Manager..."
 # Install hex package manager for elixir/phoenix.
 mix local.hex
 echo "#########################################################################"
 
 echo "#########################################################################"
-echo "18. Installing Phoenix..."
+echo "20. Installing Phoenix..."
 # Install phoenix framework.
 mix archive.install hex phx_new 1.5.9
 echo "phoenix version: $(mix phx.new --version)"
+echo "#########################################################################"
+
+echo "#########################################################################"
+echo "21. Download any updates for apps from the App Store..."
+# Download and install all updates for macOS App Store.
+softwareupdate -ia
+echo "#########################################################################"
+
+echo "#########################################################################"
+echo "22. Wait for logging into App Store to use mas-cli..."
+# Since macOS 10.13 the "signin" option has been disabled so I must login to the
+# App Store manually. This code will launch the App Store and wait for me to login.
+until (mas account > /dev/null); # If signed in, drop to outer "done"
+  do
+    #	If here, not logged in
+	  echo -e "You are not yet logged into the Mac App Store."
+	  echo -e "I will launch the Mac App Store now."
+	  echo -e "\nPlease log in to the Mac App Store..."
+	  open -a "/Applications/App Store.app"
+
+    # until loop waits patiently until scriptrunner signs into Mac App Store
+	  until (mas account > /dev/null);
+	  do
+		  sleep 3
+    	  echo -e "… zzz …."
+  	done
+  done
+  echo -e "You are signed into the Mac App Store."
+  echo -e "MAS user name: $(mas account)"
+echo "#########################################################################"
+
+echo "#########################################################################"
+echo "23. Install apps from App Store using mas-cli..."
+# App ids to install.
+# TODO: Find out how to put a wait call in the Brewfile, I can then eliminate this.
+ad_guard=1440147259
+clean_my_mac=1339170533
+day_one=1055511498
+flow=1423210932
+istat_menus=1319778037
+journey=1489704689
+numbers=409203825
+pages=409201541
+paste=967805235
+photo_sweeper=463362050
+telegram=747648890
+text_now=1277776968
+mas install ad_guard clean_my_mac day_one flow istat_menus journey numbers pages paste photo_sweeper telegram text_now
 echo "#########################################################################"
 
 ###############################################################################
@@ -184,7 +247,7 @@ echo "#########################################################################"
 ###############################################################################
 
 echo "#########################################################################"
-echo "19. Making System Modifications..."
+echo "24. Making System Modifications..."
 echo "#########################################################################"
 
 # Make Chrome Two finger swipe for back and forward
@@ -195,10 +258,12 @@ defaults write com.google.Chrome AppleEnableSwipeNavigateWithScrolls -bool TRUE
 ###############################################################################
 
 # Set computer name (as done via System Preferences → Sharing)
-#sudo scutil --set ComputerName "0x6D746873"
-#sudo scutil --set HostName "0x6D746873"
-#sudo scutil --set LocalHostName "0x6D746873"
-#sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string "0x6D746873"
+# iMac: 🖥️ &#x1F5A5
+# MacBook: 💻 &#x1F4BB
+#sudo scutil --set ComputerName "&#x1F5A5"
+#sudo scutil --set HostName "&#x1F5A5"
+#sudo scutil --set LocalHostName "&#x1F5A5"
+#sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string "&#x1F5A5"
 
 # Set standby delay to 24 hours (default is 1 hour)
 sudo pmset -a standbydelay 86400
@@ -504,10 +569,6 @@ chflags nohidden ~/Library
 
 # Show the /Volumes folder
 sudo chflags nohidden /Volumes
-
-# Remove Dropbox’s green checkmark icons in Finder
-# file=/Applications/Dropbox.app/Contents/Resources/emblem-dropbox-uptodate.icns
-# [ -e "${file}" ] && mv -f "${file}" "${file}.bak"
 
 # Expand the following File Info panes:
 # “General”, “Open with”, and “Sharing & Permissions”
