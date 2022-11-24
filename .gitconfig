@@ -1,76 +1,84 @@
 [alias]
-	# Amend the currently staged files to the latest commit.
-	amend = commit --amend --reuse-message=HEAD
-	b = checkout -b
-	co = checkout
-	cp = cherry-pick
-	# View abbreviated SHA, description, & history graph of the latest 20 commits.
-	l = log --pretty=oneline -n 20 --graph --abbrev-commit
-	remotes = remote -v
-	rh = reset --hard HEAD
-	# View the current working tree status using the short format.
-	s = status -s
-	# Show verbose output about tags, branches, or remotes.
-	tags = tag -l
-	unstage = reset --soft HEAD
+  # View abbreviated SHA, description, & history graph of the latest 20 commits.
+  l = log --pretty=oneline -n 20 --graph --abbrev-commit
+  # Quick view remotes
+  remotes = remote -v
+  # View the current working tree status using the short format.
+  s = status -s
+  # Show verbose output about tags, branches, or remotes.
+  tags = tag -l
+	append = town append
+	hack = town hack
+	kill = town kill
+	new-pull-request = town new-pull-request
+	prepend = town prepend
+	prune-branches = town prune-branches
+	rename-branch = town rename-branch
+	repo = town repo
+	ship = town ship
+	sync = town sync
 
 [core]
+  # VSCode
+  editor = code --wait
+  # Global .gitignore config
+  excludesfile = ~/.gitignore
+  # Make use of `git-delta`
+  pager = delta
+  # Make `git rebase` safer on macOS
+  # More info: <http://www.git-tower.com/blog/make-git-rebase-safe-on-osx/>
+  trustctime = false
 
-	editor = code --wait
-	excludesfile = ~/.gitignore
-	# Make `git rebase` safer on macOS
-	# More info: <http://www.git-tower.com/blog/make-git-rebase-safe-on-osx/>
-	trustctime = false
+[delta]
 
-[color "branch"]
+  light = false
+  line-numbers = true
+  # Use n and N to move between diff sections
+  navigate = true
+  side-by-side = true
 
-	current = yellow reverse
-	local = yellow
-	remote = green
+[diff]
 
-[color "diff"]
-
-	meta = yellow bold
-	frag = magenta bold # line info
-	old = red # deletions
-	new = green # additions
-
-[color "status"]
-
-	added = yellow
-	changed = green
-	untracked = cyan
+  colorMoved = default
 
 [fetch]
 
-	prune = true
+  prune = true
 
 [help]
-
-	# Automatically correct & execute mistyped commands
-	autocorrect = 1
+  # Automatically correct & execute mistyped commands.
+  autocorrect = 1
 
 [init]
 
-	defaultBranch = production
+  defaultBranch = production
+
+[interactive]
+
+  diffFilter = delta --color-only
+
+[add.interactive]
+  # Required for git >= 2.37.0
+  useBuiltin = false
 
 [merge]
 
-	# Include summaries of merged commits in newly created merge commit messages
-	log = true
+  conflictstyle = diff3
+  # Include summaries of merged commits in newly created merge commit messages.
+  log = true
 
 [pull]
 
-	rebase = false
+  rebase = false
 
 [push]
 
-	# Push the current branch to update a branch with the same name on receiving end.
-	# Works in both central & non-central workflows.
-	# When pushing to a remote that is different from the remote you normally pull from,
-	# work as current. This is the safest option & is suited for beginners.
-	default = current
+  # Push the current branch to update branch with the same name on receiving end.
+  # Works in both central & non-central workflows.
+  # When pushing to a remote that is different from teh remote you normally pull from, work as current. This is the safest option & is suited for beginners.
+  default = current
 
 [user]
-	email = me@codybrunner.dev
-	name = Cody Brunner
+
+  email = me@codybrunner.com
+  name = Cody Brunner
