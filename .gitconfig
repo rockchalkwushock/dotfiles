@@ -1,84 +1,92 @@
 [alias]
-  # View abbreviated SHA, description, & history graph of the latest 20 commits.
-  l = log --pretty=oneline -n 20 --graph --abbrev-commit
-  # Quick view remotes
-  remotes = remote -v
-  # View the current working tree status using the short format.
-  s = status -s
-  # Show verbose output about tags, branches, or remotes.
-  tags = tag -l
+
 	append = town append
+	# Sign local commits with GPG key.
+	commit = commit -S
+	diff-parent = town diff-parent
 	hack = town hack
 	kill = town kill
+	# View abbreviated SHA, description, & history graph of the latest 20 commits.
+	l = log --pretty=oneline -n 20 --graph --abbrev-commit
 	new-pull-request = town new-pull-request
 	prepend = town prepend
 	prune-branches = town prune-branches
+	# Quick view remotes.
+	remotes = remote -v
 	rename-branch = town rename-branch
 	repo = town repo
+	# View the current working tree status using the short format.
+	s = status -s
 	ship = town ship
 	sync = town sync
+	# Show verbose output about tags.
+	tags = tag -l
+
+[commit]
+	gpgsign = true
 
 [core]
-  # VSCode
-  editor = code --wait
-  # Global .gitignore config
-  excludesfile = ~/.gitignore
-  # Make use of `git-delta`
-  pager = delta
-  # Make `git rebase` safer on macOS
-  # More info: <http://www.git-tower.com/blog/make-git-rebase-safe-on-osx/>
-  trustctime = false
+	# Use VSCode.
+	editor = code --wait
+	# Global .gitignore reference.
+	excludefile = ~/.gitignore
+	# Use `git-delta`.
+	pager = delta
+	# Make `git rebase` safer on macOS.
+	# More info: <https://www.git-tower.com/blog/make-git-rebase-safe-on-oxs/>
+	trustctime = false
 
 [delta]
 
-  light = false
-  line-numbers = true
-  # Use n and N to move between diff sections
-  navigate = true
-  side-by-side = true
+	light = false
+	line-numbers = true
+	# Use n & N to move between diff sections.
+	navigate = true
+	side-by-side = true
 
 [diff]
 
-  colorMoved = default
+	colorMoved = default
 
 [fetch]
 
-  prune = true
+	prune = true
 
 [help]
-  # Automatically correct & execute mistyped commands.
-  autocorrect = 1
+	# Automatically correct & execute mistyped commands.
+	autocorrect = 1
 
 [init]
 
-  defaultBranch = production
+	defaultBranch = production
 
 [interactive]
 
-  diffFilter = delta --color-only
+	diffFilter = delta --color-only
 
 [add.interactive]
-  # Required for git >= 2.37.0
-  useBuiltin = false
+	# Required for git >= 2.37.0
+	useBuiltin = false
 
 [merge]
 
-  conflictstyle = diff3
-  # Include summaries of merged commits in newly created merge commit messages.
-  log = true
+	conflictstyle = diff3
+	# Include summaries of merged commits in newly created merge commit messages.
+	log = true
 
 [pull]
 
-  rebase = false
+	rebase = false
 
 [push]
-
-  # Push the current branch to update branch with the same name on receiving end.
-  # Works in both central & non-central workflows.
-  # When pushing to a remote that is different from teh remote you normally pull from, work as current. This is the safest option & is suited for beginners.
-  default = current
+	# Push the current branch to update branch with the same name on receiving end.
+	# Works in both central and non-central workflows.
+	# When pushing to a remote that is different from the remote you normally pull from, work as current.
+	# This is the safest option & is suited for beginners.
+	default = current
 
 [user]
 
-  email = me@codybrunner.com
-  name = Cody Brunner
+	email = me@codybrunner.com
+	name = Cody Brunner
+	signingkey = # GPG key ID
