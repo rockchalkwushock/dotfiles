@@ -1,8 +1,9 @@
-nodejs lts
-pnpm 8.5.0
-elixir 1.14.4-otp-25
-erlang 25.0.4
+nodejs 20.9.0
+pnpm 8.10.5
+elixir 1.15.2-otp-25
+erlang 25.3.2.3
 python 3.11.3
 mysql 8.0.32
 rust 1.69.0
-gleam 0.28.3
+gleam 0.30.0
+golang 1.21.4

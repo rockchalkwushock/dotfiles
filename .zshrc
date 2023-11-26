@@ -17,9 +17,12 @@ export EDITOR="code";
 # Explicitly set the locale to UTF-8
 export LANG=en_US.UTF-8
 
+# Golang
+export GOROOT=/Users/cody/.asdf/installs/golang/1.21.4/go
+
 # Homebrew
 export HOMEBREW_CASK_OPTS="--appdir=$HOME/Applications --fontdir=$HOME/Library/Fonts --require-sha";
-export HOMEBREW_NO_ANALYTICS=true;
+# export HOMEBREW_NO_ANALYTICS=true;
 export HOMEBREW_NO_ENV_HINTS=true;
 export HOMEBREW_NO_INSTALL_UPGRADE=true;
 
