@@ -18,7 +18,7 @@ export EDITOR="code";
 export LANG=en_US.UTF-8
 
 # Golang
-export GOROOT=/Users/cody/.asdf/installs/golang/1.21.4/go
+export GOROOT=/Users/cody/.asdf/installs/golang/1.22.0/go
 
 # Homebrew
 export HOMEBREW_CASK_OPTS="--appdir=$HOME/Applications --fontdir=$HOME/Library/Fonts --require-sha";
@@ -33,6 +33,9 @@ export KERL_CONFIGURE_OPTIONS="--disable-debug --without-javac --with-ssl=$(brew
 
 # MySQL
 export DATADIR="$HOME/.asdf/installs/mysql/8.0.32/data/";
+
+# PNPM
+export PNPM_HOME="/Users/cody/Library/pnpm";
 
 # Zoxide
 export _ZO_DATA_DIR="$HOME/Library/Application Support";
@@ -141,3 +144,11 @@ fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src;
 
 # Load oh-my-zsh
 source $ZSH/oh-my-zsh.sh;
+
+# pnpm
+export PNPM_HOME="/Users/cody/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
